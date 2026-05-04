@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: proyecto-final-4geeks-faostat
+    env: python
+    buildCommand: "pip install -r requirements.txt && python src/run_pipeline.py --skip-download-if-present"
+    startCommand: "streamlit run src/app.py --server.port $PORT --server.address 0.0.0.0"
+    plan: free
+

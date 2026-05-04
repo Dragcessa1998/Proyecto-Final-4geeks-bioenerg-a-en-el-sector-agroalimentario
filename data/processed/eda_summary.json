@@ -1,0 +1,10 @@
+{
+  "rows": 101995,
+  "columns": 29,
+  "numeric_predictors": 19,
+  "categorical_predictors": 8,
+  "target_mean": 447212.7152551684,
+  "target_median": 11815.2,
+  "target_std": 2193562.0872654812,
+  "missing_rate": 0.192605114179025
+}

@@ -1,0 +1,13 @@
+__pycache__/
+.DS_Store
+.venv/
+venv/
+*.pyc
+data/raw/*.zip
+data/raw/*.csv
+data/processed/*.csv
+data/database/*.db
+models/*.joblib
+models/*.json
+reports/figures/*.png
+
