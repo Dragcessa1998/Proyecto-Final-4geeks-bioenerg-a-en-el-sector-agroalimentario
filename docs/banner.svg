@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 280" width="1200" height="280" role="img" aria-label="Bioenergía en el Sector Agroalimentario — Proyecto Final 4Geeks">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"  stop-color="#3a1018"/>
+      <stop offset="55%" stop-color="#5d1623"/>
+      <stop offset="100%" stop-color="#8b1538"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"  stop-color="#fbb13c"/>
+      <stop offset="100%" stop-color="#e7c97b"/>
+    </linearGradient>
+    <pattern id="scan" x="0" y="0" width="3" height="3" patternUnits="userSpaceOnUse">
+      <rect width="3" height="1" fill="rgba(255,255,255,0.04)"/>
+    </pattern>
+    <filter id="glow"><feGaussianBlur stdDeviation="3"/></filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="280" fill="url(#bg)"/>
+  <rect width="1200" height="280" fill="url(#scan)"/>
+
+  <!-- Accent stripe -->
+  <rect x="0" y="270" width="1200" height="10" fill="url(#accent)"/>
+
+  <!-- Pixel wheat (left icon) -->
+  <g transform="translate(70,80) scale(5)" shape-rendering="crispEdges">
+    <rect x="7" y="0" width="1" height="1" fill="#e7c97b"/>
+    <rect x="8" y="0" width="1" height="1" fill="#e7c97b"/>
+    <rect x="6" y="1" width="1" height="1" fill="#fbb13c"/>
+    <rect x="7" y="1" width="1" height="1" fill="#e7c97b"/>
+    <rect x="8" y="1" width="1" height="1" fill="#e7c97b"/>
+    <rect x="9" y="1" width="1" height="1" fill="#fbb13c"/>
+    <rect x="5" y="2" width="1" height="1" fill="#e7c97b"/>
+    <rect x="6" y="2" width="1" height="1" fill="#fbb13c"/>
+    <rect x="9" y="2" width="1" height="1" fill="#fbb13c"/>
+    <rect x="10" y="2" width="1" height="1" fill="#e7c97b"/>
+    <rect x="7" y="3" width="1" height="1" fill="#fbb13c"/>
+    <rect x="8" y="3" width="1" height="1" fill="#fbb13c"/>
+    <rect x="6" y="4" width="1" height="1" fill="#e7c97b"/>
+    <rect x="7" y="4" width="1" height="1" fill="#fbb13c"/>
+    <rect x="8" y="4" width="1" height="1" fill="#fbb13c"/>
+    <rect x="9" y="4" width="1" height="1" fill="#e7c97b"/>
+    <rect x="7" y="5" width="1" height="1" fill="#3aa05a"/>
+    <rect x="8" y="5" width="1" height="1" fill="#3aa05a"/>
+    <rect x="7" y="6" width="1" height="1" fill="#3aa05a"/>
+    <rect x="8" y="6" width="1" height="1" fill="#3aa05a"/>
+    <rect x="7" y="7" width="1" height="1" fill="#3aa05a"/>
+    <rect x="8" y="7" width="1" height="1" fill="#3aa05a"/>
+    <rect x="7" y="8" width="1" height="1" fill="#349452"/>
+    <rect x="8" y="8" width="1" height="1" fill="#349452"/>
+    <rect x="5" y="9" width="1" height="1" fill="#3aa05a"/>
+    <rect x="7" y="9" width="1" height="1" fill="#349452"/>
+    <rect x="8" y="9" width="1" height="1" fill="#349452"/>
+    <rect x="10" y="9" width="1" height="1" fill="#3aa05a"/>
+    <rect x="4" y="10" width="1" height="1" fill="#3aa05a"/>
+    <rect x="11" y="10" width="1" height="1" fill="#3aa05a"/>
+  </g>
+
+  <!-- Title -->
+  <text x="200" y="105"
+    font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+    font-size="44" font-weight="700" fill="#ffffff" letter-spacing="-0.5">
+    Bioenergía en el Sector
+  </text>
+  <text x="200" y="155"
+    font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+    font-size="44" font-weight="700" fill="#fbb13c" letter-spacing="-0.5">
+    Agroalimentario
+  </text>
+
+  <!-- Subtitle line -->
+  <line x1="200" y1="180" x2="280" y2="180" stroke="#fbb13c" stroke-width="3"/>
+  <text x="295" y="186"
+    font-family="'Consolas', 'Courier New', monospace"
+    font-size="14" font-weight="500" fill="#f4d3b6" letter-spacing="2">
+    FAOSTAT · MACHINE LEARNING · TFM 4GEEKS
+  </text>
+
+  <!-- Metrics chips -->
+  <g transform="translate(200,210)" font-family="'Segoe UI', sans-serif" font-size="12" fill="#ffffff">
+    <rect x="0"   y="0" width="92"  height="30" rx="4" fill="rgba(255,255,255,0.10)" stroke="rgba(251,177,60,0.5)"/>
+    <text x="46"  y="20" text-anchor="middle">R² = 0.99</text>
+    <rect x="100" y="0" width="118" height="30" rx="4" fill="rgba(255,255,255,0.10)" stroke="rgba(251,177,60,0.5)"/>
+    <text x="159" y="20" text-anchor="middle">102k filas · 26 vars</text>
+    <rect x="226" y="0" width="148" height="30" rx="4" fill="rgba(255,255,255,0.10)" stroke="rgba(251,177,60,0.5)"/>
+    <text x="300" y="20" text-anchor="middle">HistGradientBoosting</text>
+    <rect x="382" y="0" width="116" height="30" rx="4" fill="rgba(255,255,255,0.10)" stroke="rgba(251,177,60,0.5)"/>
+    <text x="440" y="20" text-anchor="middle">Streamlit · Render</text>
+  </g>
+
+  <!-- Right side: pixel chart bars -->
+  <g transform="translate(880,80)" shape-rendering="crispEdges">
+    <g fill="#fbb13c">
+      <rect x="0"   y="80" width="20" height="40"/>
+      <rect x="0"   y="80" width="20" height="4"  fill="#e7c97b"/>
+    </g>
+    <g fill="#fbb13c">
+      <rect x="30"  y="40" width="20" height="80"/>
+      <rect x="30"  y="40" width="20" height="4"  fill="#e7c97b"/>
+    </g>
+    <g fill="#fbb13c">
+      <rect x="60"  y="60" width="20" height="60"/>
+      <rect x="60"  y="60" width="20" height="4"  fill="#e7c97b"/>
+    </g>
+    <g fill="#fbb13c">
+      <rect x="90"  y="20" width="20" height="100"/>
+      <rect x="90"  y="20" width="20" height="4"  fill="#e7c97b"/>
+    </g>
+    <g fill="#fbb13c">
+      <rect x="120" y="0"  width="20" height="120"/>
+      <rect x="120" y="0"  width="20" height="4"  fill="#e7c97b"/>
+    </g>
+    <g fill="#fbb13c">
+      <rect x="150" y="50" width="20" height="70"/>
+      <rect x="150" y="50" width="20" height="4"  fill="#e7c97b"/>
+    </g>
+    <g fill="#fbb13c">
+      <rect x="180" y="30" width="20" height="90"/>
+      <rect x="180" y="30" width="20" height="4"  fill="#e7c97b"/>
+    </g>
+    <line x1="-6" y1="120" x2="206" y2="120" stroke="#f4d3b6" stroke-width="2"/>
+  </g>
+
+  <!-- Energy bolt -->
+  <g transform="translate(1100,60)" shape-rendering="crispEdges">
+    <polygon points="20,0 0,60 18,60 8,110 38,40 18,40" fill="#fbb13c" stroke="#fff" stroke-width="1.5"/>
+  </g>
+
+  <!-- 4Geeks tag bottom-right -->
+  <text x="1170" y="252" text-anchor="end"
+    font-family="'Consolas', 'Courier New', monospace"
+    font-size="11" fill="rgba(255,255,255,0.65)" letter-spacing="1.5">
+    PROYECTO FINAL · 4GEEKS ACADEMY
+  </text>
+</svg>

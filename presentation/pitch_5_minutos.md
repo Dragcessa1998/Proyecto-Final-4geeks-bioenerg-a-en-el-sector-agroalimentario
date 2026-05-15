@@ -2,23 +2,22 @@
 
 ## 1. Problema de negocio
 
-Queremos ayudar a priorizar paises y cadenas agroalimentarias con mayor potencial de bioenergia. Esto puede apoyar decisiones de inversion, investigacion agricola y politicas de transicion energetica.
+Queremos ayudar a priorizar países y cadenas agroalimentarias con mayor potencial de bioenergía. Esto puede apoyar decisiones de inversión, investigación agrícola y políticas de transición energética.
 
-## 2. Como recopilamos los datos
+## 2. Cómo recopilamos los datos
 
-Usamos FAOSTAT, una base publica de FAO. El dominio pedido fue `AF` (ASTI Researchers), y lo combinamos con gasto en investigacion, inversion agricola y bioenergia mediante descargas bulk oficiales. El pipeline descarga, guarda CSV, crea SQLite y genera el dataset final.
+Usamos FAOSTAT, una base pública de FAO. El dominio pedido fue `AF` (ASTI Researchers), y lo combinamos con gasto en investigación, inversión agrícola y bioenergía mediante descargas bulk oficiales. El pipeline descarga, guarda CSV, crea SQLite y genera el dataset final.
 
 ## 3. Patrones importantes
 
-- La bioenergia presenta alta variacion por pais, item y elemento medido.
+- La bioenergía presenta alta variación por país, ítem y elemento medido.
 - Las series temporales importan: los valores pasados son predictores fuertes.
-- El contexto de investigacion e inversion agricola ayuda a interpretar diferencias entre paises.
+- El contexto de investigación e inversión agrícola ayuda a interpretar diferencias entre países.
 
-## 4. Modelo y metrica
+## 4. Modelo y métrica
 
-Entrenamos un `HistGradientBoostingRegressor`, optimizado con `GridSearchCV`. Evaluamos con MAE, RMSE y R2 sobre el logaritmo del objetivo para reducir el efecto de valores extremos.
+Entrenamos un `HistGradientBoostingRegressor`, optimizado con `GridSearchCV`. Evaluamos con MAE, RMSE y R² sobre el logaritmo del objetivo para reducir el efecto de valores extremos.
 
 ## 5. Demo y mejoras
 
-La app Streamlit permite seleccionar pais, ano, item y elemento para estimar el valor esperado de bioenergia. Como mejoras futuras: agregar datos climaticos, indicadores de precios energeticos y comparacion geografica en mapas.
-
+La app Streamlit permite seleccionar país, año, ítem y elemento para estimar el valor esperado de bioenergía. Como mejoras futuras: agregar datos climáticos, indicadores de precios energéticos y comparación geográfica en mapas.
