@@ -1,0 +1,25 @@
+<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <defs>
+    <linearGradient id="leafGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="oklch(0.84 0.16 140)"></stop>
+      <stop offset="55%" stop-color="oklch(0.80 0.15 175)"></stop>
+      <stop offset="100%" stop-color="oklch(0.62 0.13 200)"></stop>
+    </linearGradient>
+    <linearGradient id="boltGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="oklch(0.94 0.12 100)"></stop>
+      <stop offset="100%" stop-color="oklch(0.82 0.15 80)"></stop>
+    </linearGradient>
+  </defs>
+
+  
+  <path d="M34 6&#xA;           C 34 19, 27 29, 15 33&#xA;           C 9 34.5, 4.5 32, 5 26&#xA;           C 5.5 18, 12 9, 22 5.5&#xA;           C 28 3.6, 32.5 3.5, 34 6 Z" fill="url(#leafGrad)"></path>
+
+  
+  <path d="M34 6 L 9 31" stroke="oklch(0.30 0.05 200)" stroke-width="0.8" opacity="0.55" stroke-linecap="round"></path>
+
+  
+  <path d="M27 9 L 21 16 M23 14 L 17 20 M19 19 L 13 25 M30 13 L 24 19" stroke="oklch(0.30 0.05 200)" stroke-width="0.55" opacity="0.45" stroke-linecap="round"></path>
+
+  
+  <path d="M22 11 L 14 22 L 18.5 22 L 16 28 L 24 17 L 19.5 17 L 22 11 Z" fill="url(#boltGrad)" stroke="oklch(0.18 0.022 215)" stroke-width="0.6" stroke-linejoin="round"></path>
+</svg>

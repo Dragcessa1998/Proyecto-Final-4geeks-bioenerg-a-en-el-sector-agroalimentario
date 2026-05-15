@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<title>faolab — FAOSTAT Bioenergy Predictor</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body data-theme="dark">
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script src="data.js"></script>
+<script src="i18n.js"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="charts.jsx"></script>
+<script type="text/babel" src="pages-1.jsx"></script>
+<script type="text/babel" src="pages-2.jsx"></script>
+
+<script type="text/babel">
+const { useState, useEffect, useMemo } = React;
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "theme": "dark"
+}/*EDITMODE-END*/;
+
+function App() {
+  const [page, setPage] = useState("data");
+  const [lang, setLang] = useState("es");
+  const t = window.I18N[lang];
+
+  const [tweakValues, setTweak] = window.useTweaks
+    ? window.useTweaks(TWEAK_DEFAULTS)
+    : [TWEAK_DEFAULTS, ()=>{}];
+
+  useEffect(()=>{
+    document.body.dataset.theme = tweakValues.theme || "dark";
+  }, [tweakValues.theme]);
+
+  const [training, setTraining] = useState(false);
+  const [log, setLog] = useState([]);
+  const runTraining = () => {
+    if (training) return;
+    setTraining(true);
+    setLog([]);
+    const lines = [
+      { kind:"info", msg:"loading data/processed/modeling_dataset.csv" },
+      { kind:"ok",   msg:"loaded 101,995 rows × 29 cols" },
+      { kind:"info", msg:"dropping rows with null log_target_value" },
+      { kind:"info", msg:"time-aware split @ year ≤ 2017 (p80)" },
+      { kind:"ok",   msg:"train=84,749  test=17,246" },
+      { kind:"info", msg:"fitting ColumnTransformer (19 numeric + 7 categorical)" },
+      { kind:"info", msg:"GridSearchCV(neg_RMSE, cv=3) on 80k tuning sample" },
+      { kind:"info", msg:"  trial 1/4 · lr=0.05, max_iter=80  → RMSE=0.351 (log)" },
+      { kind:"info", msg:"  trial 2/4 · lr=0.05, max_iter=140 → RMSE=0.338 (log)" },
+      { kind:"info", msg:"  trial 3/4 · lr=0.08, max_iter=80  → RMSE=0.342 (log)" },
+      { kind:"info", msg:"  trial 4/4 · lr=0.08, max_iter=140 → RMSE=0.331 (log) ★" },
+      { kind:"ok",   msg:"best: lr=0.08, max_iter=140, max_leaf_nodes=31" },
+      { kind:"info", msg:"refitting on full training set" },
+      { kind:"ok",   msg:"R²(log target)=0.9905 · MAE=60,528 TJ · RMSE=641,472 TJ" },
+      { kind:"ok",   msg:"saved models/bioenergy_model.joblib (1.2 MB)" },
+    ];
+    let i = 0;
+    const tick = () => {
+      if (i >= lines.length) { setTraining(false); return; }
+      const now = new Date();
+      const t = `${String(now.getHours()).padStart(2,"0")}:${String(now.getMinutes()).padStart(2,"0")}:${String(now.getSeconds()).padStart(2,"0")}`;
+      setLog(L => [...L, { ...lines[i], t }]);
+      i++;
+      setTimeout(tick, 200 + Math.random()*180);
+    };
+    tick();
+  };
+
+  const Page =
+    page==="data"     ? <DataPage     t={t} lang={lang}/> :
+    page==="eda"      ? <EdaPage      t={t} lang={lang}/> :
+    page==="train"    ? <TrainPage    t={t} lang={lang}
+                                       training={training} runTraining={runTraining} log={log}/> :
+    page==="evaluate" ? <EvaluatePage t={t} lang={lang}/> :
+    page==="predict"  ? <PredictPage  t={t} lang={lang}/> :
+    page==="code"     ? <CodePage     t={t} lang={lang}/> :
+    page==="game"     ? <GamePage     t={t} lang={lang}/> : null;
+
+  return (
+    <div className="app" data-screen-label={`${page}`}>
+      <header className="topbar">
+        <div className="brand">
+          <img src="faolab-logo.svg" alt="" className="brand-mark"/>
+          <div className="brand-name">
+            <b>faolab</b>
+            <span>FAOSTAT · Bioenergy</span>
+          </div>
+        </div>
+        <a className="cobrand" href="https://4geeks.com" target="_blank" rel="noopener"
+          title="Proyecto Final · 4Geeks Academy">
+          <img src="4geeks-logo.jpg" alt="4Geeks Academy" className="cobrand-img"/>
+          <div className="cb-stack">
+            <span className="cobrand-tag">Proyecto Final</span>
+            <span className="cobrand-name">4Geeks Academy</span>
+          </div>
+        </a>
+        <div className="topbar-spacer"/>
+        <div className="lang-toggle" role="tablist">
+          <button className={lang==="es"?"active":""} onClick={()=>setLang("es")}>ES</button>
+          <button className={lang==="en"?"active":""} onClick={()=>setLang("en")}>EN</button>
+        </div>
+        <button className="icon-btn" title="theme"
+          onClick={()=>setTweak("theme", tweakValues.theme==="dark"?"light":"dark")}>
+          {tweakValues.theme==="dark" ? <window.Icon.sun/> : <window.Icon.moon/>}
+        </button>
+        <button className="btn btn-primary btn-run" onClick={runTraining} disabled={training}>
+          <window.Icon.play/>
+          <span className="btn-label">{training ? t.running : t.runPipeline}</span>
+        </button>
+      </header>
+
+      <Sidebar page={page} setPage={setPage} t={t} lang={lang}/>
+
+      <main className="main" data-screen-label={`${page}`}>
+        {Page}
+      </main>
+
+      {window.TweaksPanel && (
+        <window.TweaksPanel title="Tweaks">
+          <window.TweakSection label="Appearance">
+            <window.TweakRadio
+              label="Theme"
+              value={tweakValues.theme}
+              options={["dark","light"]}
+              onChange={(v)=>setTweak("theme", v)}/>
+          </window.TweakSection>
+        </window.TweaksPanel>
+      )}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+</body>
+</html>
