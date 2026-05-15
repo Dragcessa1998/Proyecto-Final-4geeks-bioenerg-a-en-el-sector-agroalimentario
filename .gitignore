@@ -11,3 +11,5 @@ models/*.joblib
 models/*.json
 reports/figures/*.png
 
+# Claude Code (per-developer, no compartir)
+.claude/settings.local.json
