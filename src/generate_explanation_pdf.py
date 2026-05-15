@@ -125,7 +125,7 @@ def footer(canvas, doc) -> None:
     canvas.setFont("Helvetica", 8)
     canvas.setFillColor(colors.HexColor("#64748b"))
     canvas.drawString(1.6 * cm, 1.0 * cm, "Proyecto Final 4Geeks - FAOSTAT")
-    canvas.drawRightString(19.4 * cm, 1.0 * cm, f"Pagina {doc.page}")
+    canvas.drawRightString(19.4 * cm, 1.0 * cm, f"Página {doc.page}")
     canvas.restoreState()
 
 
@@ -139,29 +139,29 @@ def main() -> None:
     story.append(p("Proyecto Final 4Geeks - FAOSTAT", styles, "title"))
     story.append(
         p(
-            "Guia explicativa: que pide la entrega, como se realizo el proyecto y que debe presentarse.",
+            "Guía explicativa: que pide la entrega, cómo se realizó el proyecto y que debe presentarse.",
             styles,
             "subtitle",
         )
     )
 
-    story.append(p("1. Que debemos hacer", styles, "h1"))
+    story.append(p("1. Qué debemos hacer", styles, "h1"))
     story.append(
         p(
-            "La entrega pide construir un proyecto completo de Machine Learning: definir un problema de negocio, obtener datos desde una fuente real, almacenarlos en una base de datos, analizarlos, entrenar un modelo optimizado y desplegarlo en una aplicacion web.",
+            "La entrega pide construir un proyecto completo de Machine Learning: definir un problema de negocio, obtener datos desde una fuente real, almacenarlos en una base de datos, analizarlos, entrenar un modelo optimizado y desplegarlo en una aplicación web.",
             styles,
         )
     )
     story.append(
         table(
             [
-                ["Fase", "Que se debe entregar"],
+                ["Fase", "Qué se debe entregar"],
                 ["Paso 1", "Definir un problema real y convertirlo en un problema de Machine Learning."],
-                ["Paso 2", "Obtener datos desde una API, portal, web scraping o base publica; guardarlos como CSV y cargarlos con Pandas."],
-                ["Paso 3", "Guardar la informacion en una base de datos y realizar consultas SQL como SELECT, JOIN e INSERT."],
-                ["Paso 4", "Realizar analisis descriptivo: medias, medianas, desviaciones, modas, nulos, distribuciones y, si aplica, hipotesis."],
-                ["Paso 5", "Hacer un EDA completo, seleccionar variables utiles y dividir los datos en train y test."],
-                ["Paso 6", "Entrenar, comparar u optimizar un modelo usando hiperparametros y metricas de evaluacion."],
+                ["Paso 2", "Obtener datos desde una API, portal, web scraping o base pública; guardarlos como CSV y cargarlos con Pandas."],
+                ["Paso 3", "Guardar la información en una base de datos y realizar consultas SQL como SELECT, JOIN e INSERT."],
+                ["Paso 4", "Realizar análisis descriptivo: medias, medianas, desviaciones, modas, nulos, distribuciones y, si aplica, hipótesis."],
+                ["Paso 5", "Hacer un EDA completo, seleccionar variables útiles y dividir los datos en train y test."],
+                ["Paso 6", "Entrenar, comparar u optimizar un modelo usando hiperparámetros y métricas de evaluacion."],
                 ["Paso 7", "Crear una app web con el modelo guardado y dejarla lista para despliegue."],
             ],
             [2.2 * cm, 14.8 * cm],
@@ -171,13 +171,13 @@ def main() -> None:
     story.append(p("2. Problema elegido", styles, "h1"))
     story.append(
         p(
-            "El problema elegido fue estimar el valor esperado de bioenergia por pais, ano, item y tipo de medicion. Esto sirve para apoyar decisiones sobre inversion, investigacion y priorizacion de cadenas agroalimentarias con potencial energetico.",
+            "El problema elegido fue estimar el valor esperado de bioenergía por país, año, item y tipo de medicion. Esto sirve para apoyar decisiones sobre inversión, investigación y priorización de cadenas agroalimentarias con potencial energético.",
             styles,
         )
     )
     story.append(
         p(
-            "El objetivo de Machine Learning es una regresion: predecir un valor numerico llamado target_value. Para mejorar el entrenamiento se usa tambien log_target_value, que reduce el efecto de valores extremos.",
+            "El objetivo de Machine Learning es una regresión: predecir un valor numérico llamado target_value. Para mejorar el entrenamiento se usa también log_target_value, que reduce el efecto de valores extremos.",
             styles,
         )
     )
@@ -185,17 +185,17 @@ def main() -> None:
     story.append(p("3. Datos utilizados", styles, "h1"))
     story.append(
         p(
-            "La fuente solicitada fue FAOSTAT, especificamente el dominio AF. Ese dominio corresponde a ASTI - Researchers. Como AF por si solo no alcanza las 60.000 filas, se uso como fuente contextual y se combino con otros dominios oficiales de FAOSTAT.",
+            "La fuente solicitada fue FAOSTAT, específicamente el dominio AF. Ese dominio corresponde a ASTI - Researchers. Como AF por sí solo no alcanza las 60.000 filas, se usó como fuente contextual y se combinó con otros dominios oficiales de FAOSTAT.",
             styles,
         )
     )
     story.append(
         table(
             [
-                ["Codigo", "Nombre", "Uso en el proyecto"],
-                ["AF", "ASTI - Researchers", "Fuente pedida y variable de contexto sobre investigadores agricolas."],
-                ["AE", "ASTI - Expenditures", "Contexto de gasto en investigacion agricola."],
-                ["CISP", "Country Investment Statistics Profile", "Contexto de inversion y valor agregado agropecuario."],
+                ["Código", "Nombre", "Uso en el proyecto"],
+                ["AF", "ASTI - Researchers", "Fuente pedida y variable de contexto sobre investigadores agrícolas."],
+                ["AE", "ASTI - Expenditures", "Contexto de gasto en investigación agrícola."],
+                ["CISP", "Country Investment Statistics Profile", "Contexto de inversión y valor agregado agropecuario."],
                 ["BE", "Bioenergy", "Tabla principal para construir el modelo predictivo."],
             ],
             [2.0 * cm, 5.0 * cm, 10.0 * cm],
@@ -209,14 +209,14 @@ def main() -> None:
     )
 
     story.append(PageBreak())
-    story.append(p("4. Cumplimiento de requisitos minimos", styles, "h1"))
+    story.append(p("4. Cumplimiento de requisitos mínimos", styles, "h1"))
     story.append(
         table(
             [
                 ["Requisito", "Resultado del proyecto", "Estado"],
-                ["Minimo 60.000 filas", f"{metrics['rows_total']:,} filas", "Cumplido"],
-                ["Minimo 20 predictores", f"{metrics['predictor_count']} predictores", "Cumplido"],
-                ["Al menos 1 categorica", f"{metrics['categorical_predictor_count']} categoricas", "Cumplido"],
+                ["Mínimo 60.000 filas", f"{metrics['rows_total']:,} filas", "Cumplido"],
+                ["Mínimo 20 predictores", f"{metrics['predictor_count']} predictores", "Cumplido"],
+                ["Al menos 1 categórica", f"{metrics['categorical_predictor_count']} categóricas", "Cumplido"],
                 ["CSV final", "data/processed/modeling_dataset.csv", "Cumplido"],
                 ["Base de datos", "data/database/faostat_project.db", "Cumplido"],
                 ["Notebook ejecutado", "notebooks/explore.ipynb con salidas guardadas", "Cumplido"],
@@ -225,11 +225,11 @@ def main() -> None:
         )
     )
 
-    story.append(p("5. Como se realizo tecnicamente", styles, "h1"))
-    story.append(p("Obtencion y carga", styles, "h2"))
+    story.append(p("5. Cómo se realizó técnicamente", styles, "h1"))
+    story.append(p("Obtención y carga", styles, "h2"))
     story.append(
         p(
-            "El script src/data_download.py descarga los ZIP oficiales de FAOSTAT. Luego lee los CSV internos con Pandas, normaliza los nombres de columnas y conserva el codigo de fuente de cada tabla.",
+            "El script src/data_download.py descarga los ZIP oficiales de FAOSTAT. Luego lee los CSV internos con Pandas, normaliza los nombres de columnas y conserva el código de fuente de cada tabla.",
             styles,
         )
     )
@@ -243,28 +243,28 @@ def main() -> None:
     story.append(p("Feature engineering", styles, "h2"))
     story.append(
         p(
-            "El script src/features.py combina los dominios por pais y ano, crea variables de contexto y genera variables temporales como target_lag_1, target_lag_2, target_lag_3 y target_roll_mean_3.",
+            "El script src/features.py combina los dominios por país y año, crea variables de contexto y genera variables temporales como target_lag_1, target_lag_2, target_lag_3 y target_roll_mean_3.",
             styles,
         )
     )
-    story.append(p("EDA y analisis descriptivo", styles, "h2"))
+    story.append(p("EDA y análisis descriptivo", styles, "h2"))
     story.append(
         p(
-            f"El EDA calcula estadisticas descriptivas, nulos y distribuciones. El dataset final tiene una media del objetivo de {eda['target_mean']:,.2f}, mediana de {eda['target_median']:,.2f} y una tasa promedio de nulos de {eda['missing_rate']:.2%}. Tambien se agrego un contraste Kruskal-Wallis para revisar diferencias del objetivo por item.",
+            f"El EDA calcula estadísticas descriptivas, nulos y distribuciones. El dataset final tiene una media del objetivo de {eda['target_mean']:,.2f}, mediana de {eda['target_median']:,.2f} y una tasa promedio de nulos de {eda['missing_rate']:.2%}. También se agregó un contraste Kruskal-Wallis para revisar diferencias del objetivo por item.",
             styles,
         )
     )
     story.append(p("Modelo", styles, "h2"))
     story.append(
         p(
-            "Se entreno un HistGradientBoostingRegressor porque puede capturar relaciones no lineales y funciona bien en datos tabulares. Se uso GridSearchCV para optimizar hiperparametros y una division temporal train/test para respetar el orden cronologico.",
+            "Se entreno un HistGradientBoostingRegressor porque puede capturar relaciones no lineales y funciona bien en datos tabulares. Se uso GridSearchCV para optimizar hiperparámetros y una division temporal train/test para respetar el orden cronológico.",
             styles,
         )
     )
     story.append(
         table(
             [
-                ["Metrica", "Valor"],
+                ["Métrica", "Valor"],
                 ["Filas train", f"{metrics['rows_train']:,}"],
                 ["Filas test", f"{metrics['rows_test']:,}"],
                 ["MAE", f"{metrics['mae']:,.2f}"],
@@ -276,37 +276,37 @@ def main() -> None:
         )
     )
 
-    story.append(p("6. Aplicacion web y despliegue", styles, "h1"))
+    story.append(p("6. Aplicación web y despliegue", styles, "h1"))
     story.append(
         p(
-            "La app esta construida con Streamlit en src/app.py. Permite seleccionar pais, ano, item y tipo de medicion, y devuelve una prediccion usando el modelo guardado en models/bioenergy_model.joblib.",
+            "La app esta construida con Streamlit en src/app.py. Permite seleccionar país, año, item y tipo de medicion, y devuelve una predicción usando el modelo guardado en models/bioenergy_model.joblib.",
             styles,
         )
     )
     story.append(
         p(
-            "Para despliegue se dejo render.yaml, que instala dependencias, prepara el pipeline y ejecuta Streamlit en Render. Localmente se puede abrir con: streamlit run src/app.py",
+            "Para despliegue se dejó render.yaml, que instala dependencias, prepara el pipeline y ejecuta Streamlit en Render. Localmente se puede abrir con: streamlit run src/app.py",
             styles,
         )
     )
 
-    story.append(p("7. Que decir en la presentacion de 5 minutos", styles, "h1"))
+    story.append(p("7. Qué decir en la presentación de 5 minutos", styles, "h1"))
     story.append(
         table(
             [
                 ["Tiempo", "Mensaje recomendado"],
-                ["0:00 - 0:45", "Problema: identificar potencial de bioenergia en sistemas agroalimentarios."],
+                ["0:00 - 0:45", "Problema: identificar potencial de bioenergía en sistemas agroalimentarios."],
                 ["0:45 - 1:30", "Datos: FAOSTAT, dominio AF solicitado y enriquecimiento con BE, AE y CISP."],
-                ["1:30 - 2:30", "Patrones: diferencias por pais/item, importancia temporal y valores extremos."],
-                ["2:30 - 3:45", "Modelo: regresion con HistGradientBoostingRegressor, GridSearchCV, MAE/RMSE/R2."],
-                ["3:45 - 5:00", "Demo: app Streamlit, prediccion de escenarios y mejoras futuras."],
+                ["1:30 - 2:30", "Patrones: diferencias por país/item, importancia temporal y valores extremos."],
+                ["2:30 - 3:45", "Modelo: regresión con HistGradientBoostingRegressor, GridSearchCV, MAE/RMSE/R2."],
+                ["3:45 - 5:00", "Demo: app Streamlit, predicción de escenarios y mejoras futuras."],
             ],
             [3.0 * cm, 13.8 * cm],
         )
     )
     story.append(
         p(
-            "Idea central para cerrar: el proyecto no solo descarga datos, sino que convierte informacion publica en una herramienta predictiva util para tomar decisiones.",
+            "Idea central para cerrar: el proyecto no solo descarga datos, sino que convierte información pública en una herramienta predictiva útil para tomar decisiones.",
             styles,
         )
     )

@@ -8,7 +8,7 @@
 4. Se abre un Pull Request.
 5. Otro integrante revisa y aprueba antes de unir a `main`.
 
-## Comandos basicos
+## Comandos básicos
 
 ```bash
 git clone URL_DEL_REPOSITORIO
@@ -25,11 +25,11 @@ streamlit run src/app.py
 ```bash
 git checkout -b nombre-de-la-rama
 git add .
-git commit -m "Descripcion del cambio"
+git commit -m "Descripción del cambio"
 git push -u origin nombre-de-la-rama
 ```
 
-## Anadir companeros
+## Añadir compañeros
 
 En GitHub:
 
@@ -37,6 +37,6 @@ En GitHub:
 2. Ir a `Settings`.
 3. Entrar en `Collaborators and teams`.
 4. Seleccionar `Add people`.
-5. Escribir el usuario de GitHub del companero.
+5. Escribir el usuario de GitHub del compañero.
 6. Dar permiso `Write` para que pueda modificar el proyecto.
 

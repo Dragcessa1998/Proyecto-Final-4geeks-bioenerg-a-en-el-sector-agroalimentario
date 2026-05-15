@@ -11,7 +11,7 @@ from config import METADATA_PATH, MODEL_PATH
 
 st.set_page_config(page_title="FAOSTAT Bioenergy Predictor", layout="wide")
 st.title("FAOSTAT Bioenergy Predictor")
-st.caption("Prediccion del valor de bioenergia usando FAOSTAT y contexto ASTI/inversion agricola.")
+st.caption("Predicción del valor de bioenergía usando FAOSTAT y contexto ASTI/inversión agrícola.")
 
 
 @st.cache_resource
@@ -24,7 +24,7 @@ def load_model():
 model, metadata = load_model()
 
 if model is None:
-    st.warning("Aun no existe un modelo entrenado. Ejecuta: python src/run_pipeline.py")
+    st.warning("Aún no existe un modelo entrenado. Ejecuta: python src/run_pipeline.py")
     st.stop()
 
 metrics = metadata["metrics"]
@@ -33,15 +33,15 @@ left, right = st.columns([2, 1])
 with right:
     st.metric("Filas de entrenamiento", f"{metrics['rows_total']:,}")
     st.metric("Predictores", metrics["predictor_count"])
-    st.metric("R2 log-target", f"{metrics['r2_log_target']:.3f}")
+    st.metric("R² log-target", f"{metrics['r2_log_target']:.3f}")
     st.metric("MAE", f"{metrics['mae']:,.2f}")
 
 with left:
     st.subheader("Escenario")
     c1, c2 = st.columns(2)
-    area = c1.selectbox("Pais o region", metadata["areas"], index=0)
-    year = c2.number_input("Ano", min_value=1961, max_value=2035, value=2025, step=1)
-    item = c1.selectbox("Item", metadata["items"], index=0)
+    area = c1.selectbox("País o región", metadata["areas"], index=0)
+    year = c2.number_input("Año", min_value=1961, max_value=2035, value=2025, step=1)
+    item = c1.selectbox("Ítem", metadata["items"], index=0)
     element = c2.selectbox("Elemento", metadata["elements"], index=0)
     unit = c1.selectbox("Unidad", metadata["units"], index=0)
 
@@ -74,6 +74,6 @@ with left:
 st.divider()
 st.subheader("Lectura de negocio")
 st.write(
-    "El modelo estima el valor esperado de produccion o uso de bioenergia por pais, ano, item y tipo de medicion. "
-    "La app sirve para comparar escenarios y priorizar paises o cadenas con mayor potencial energetico dentro del sistema agroalimentario."
+    "El modelo estima el valor esperado de producción o uso de bioenergía por país, año, ítem y tipo de medición. "
+    "La app sirve para comparar escenarios y priorizar países o cadenas con mayor potencial energético dentro del sistema agroalimentario."
 )

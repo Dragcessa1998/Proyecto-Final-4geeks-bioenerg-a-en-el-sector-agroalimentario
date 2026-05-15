@@ -1,6 +1,6 @@
 # Figuras del EDA
 
-Las figuras del analisis exploratorio se generan automaticamente al ejecutar:
+Las figuras del análisis exploratorio se generan automáticamente al ejecutar:
 
 ```bash
 python src/run_pipeline.py
